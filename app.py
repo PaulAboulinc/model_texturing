@@ -3,6 +3,7 @@ import uuid
 
 from flask import Flask, send_file, request
 import texture_monkey
+import texture_rhinoceros
 import texture_snake
 
 app = Flask(__name__)
@@ -18,8 +19,8 @@ def texture_model(model):
             return texture_monkey.color_monkey(build_folder)
         if model == 'snake':
             return texture_snake.color_snake(build_folder)
-        # if model == 'rhinoceros':
-            # return texture_rhinoceros.color_rhinoceros(build_folder)
+        if model == 'rhinoceros':
+            return texture_rhinoceros.color_rhinoceros(build_folder)
 
     return ''
 
