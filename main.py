@@ -35,10 +35,18 @@ def get_sub_image(image, sub_image, meth):
     else:
         top_left = max_loc
 
-    top = top_left[1]
-    left = top_left[0]
-    bottom = top + h
-    right = left + w
+    sub_width, sub_height = Image.open(sub_image).size
+
+    addtop = sub_height / 5
+    addleft = sub_width / 5
+    addbottom = addtop * 2
+    addright = addleft * 2
+
+
+    top = top_left[1] - addtop
+    left = top_left[0] - addleft
+    bottom = top + h + addbottom
+    right = left + w + addright
 
     img = Image.open(image)
 

@@ -2,10 +2,15 @@ import shutil
 
 from pygltflib import *
 import main
+from PIL import Image
 
 
 def color_snake(build_folder):
-    snake_image = main.get_sub_image(build_folder + '/screenshot.jpg', 'models/snake/snake.jpg', 'cv.TM_CCOEFF_NORMED')
+    screenshot_image = Image.open(build_folder + '/screenshot.jpg')
+    width, height = screenshot_image.size
+    screenshot_image.crop((0, int(height/8), width, int(height - height/8))).convert('RGB').save(build_folder + '/screenshot_bis.jpg')
+
+    snake_image = main.get_sub_image(build_folder + '/screenshot_bis.jpg', 'models/snake/snake.jpg', 'cv.TM_CCOEFF_NORMED')
     snake_image.convert('RGB').save(build_folder + "/snake.jpg")
 
     head_image = main.get_sub_image(build_folder + '/snake.jpg', 'models/snake/head.jpg', 'cv.TM_CCOEFF_NORMED')
