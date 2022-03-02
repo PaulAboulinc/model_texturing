@@ -63,6 +63,3 @@ def color_rhinoceros(build_folder):
     gltf.save(build_folder + "/rhinoceros.glb")
 
     return build_folder + "/rhinoceros.glb"
-
-
-color_rhinoceros("test")
