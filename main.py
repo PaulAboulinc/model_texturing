@@ -42,7 +42,6 @@ def get_sub_image(image, sub_image, meth):
     addbottom = addtop * 2
     addright = addleft * 2
 
-
     top = top_left[1] - addtop
     left = top_left[0] - addleft
     bottom = top + h + addbottom

@@ -13,8 +13,11 @@ def color_rhinoceros(build_folder):
     rhinoceros_image = main.get_sub_image(build_folder + '/screenshot_bis.jpg', 'models/rhinoceros/rhinoceros.jpg', 'cv.TM_CCOEFF_NORMED')
     rhinoceros_image.convert('RGB').save(build_folder + "/rhinoceros.jpg")
 
-    head_image = main.get_sub_image(build_folder + '/rhinoceros.jpg', 'models/rhinoceros/head.jpg', 'cv.TM_CCOEFF_NORMED')
-    head_image.save(build_folder + "/head.jpg")
+    head1_image = main.get_sub_image(build_folder + '/rhinoceros.jpg', 'models/rhinoceros/head1.jpg', 'cv.TM_CCOEFF_NORMED')
+    head1_image.save(build_folder + "/head1.jpg")
+
+    head2_image = main.get_sub_image(build_folder + '/rhinoceros.jpg', 'models/rhinoceros/head2.jpg', 'cv.TM_CCOEFF_NORMED')
+    head2_image.save(build_folder + "/head2.jpg")
 
     horn1_image = main.get_sub_image(build_folder + '/head.jpg', 'models/rhinoceros/horn1.jpg', 'cv.TM_CCOEFF_NORMED')
     horn1_image.save(build_folder + "/horn1.jpg")
@@ -27,7 +30,7 @@ def color_rhinoceros(build_folder):
 
     gltf = GLTF2().load("models/rhinoceros/rhinoceros.gltf")
 
-    head = main.get_dominant_color(head_image)
+    head = main.get_dominant_color(head2_image)
     horn = main.get_dominant_color(horn2_image)
     body = main.get_dominant_color(body_image)
 

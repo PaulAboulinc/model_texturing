@@ -28,12 +28,15 @@ def color_monkey(build_folder):
     body_image = main.get_sub_image(build_folder + '/monkey.jpg', 'models/monkey/body.jpg', 'cv.TM_CCOEFF_NORMED')
     body_image.save(build_folder + "/body.jpg")
 
+    body2_image = main.get_sub_image(build_folder + "/body.jpg", 'models/monkey/body2.jpg', 'cv.TM_CCOEFF_NORMED')
+    body2_image.save(build_folder + "/body2.jpg")
+
     gltf = GLTF2().load("models/monkey/monkey.gltf")
 
     head = main.get_dominant_color(top_head_image)
     face = main.get_dominant_color(face_image)
     mouth = main.get_dominant_color(mouth_image)
-    body = main.get_dominant_color(body_image)
+    body = main.get_dominant_color(body2_image)
 
     black = [0.0, 0.0, 0.0, 1.0]
     gltf.materials[8].pbrMetallicRoughness.baseColorFactor = black  # eye
