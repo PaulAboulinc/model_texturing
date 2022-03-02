@@ -3,6 +3,7 @@ import uuid
 
 from flask import Flask, send_file, request
 import texture_monkey
+import texture_snake
 
 app = Flask(__name__)
 
@@ -10,10 +11,15 @@ app = Flask(__name__)
 @app.route('/texture/<model>', methods=['POST'])
 def texture_model(model):
     build_folder = 'build_' + str(uuid.uuid4())
-    if model == 'monkey' and 'screenshot' in request.files:
+    if 'screenshot' in request.files:
         os.mkdir(build_folder)
         request.files['screenshot'].save(os.path.join(build_folder, 'screenshot.jpg'))
-        return texture_monkey.color_monkey(build_folder)
+        if model == 'monkey':
+            return texture_monkey.color_monkey(build_folder)
+        if model == 'snake':
+            return texture_snake.color_snake(build_folder)
+        # if model == 'rhinoceros':
+            # return texture_rhinoceros.color_rhinoceros(build_folder)
 
     return ''
 
