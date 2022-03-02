@@ -2,10 +2,15 @@ import shutil
 
 from pygltflib import *
 import main
+from PIL import Image
 
 
 def color_monkey(build_folder):
-    monkey_image = main.get_sub_image(build_folder + '/screenshot.jpg', 'models/monkey.jpg', 'cv.TM_CCOEFF_NORMED')
+    screenshot_image = Image.open(build_folder + '/screenshot.jpg')
+    width, height = screenshot_image.size
+    screenshot_image.crop((0, int(height/8), width, int(height - height/8))).convert('RGB').save(build_folder + '/screenshot_bis.jpg')
+
+    monkey_image = main.get_sub_image(build_folder + '/screenshot_bis.jpg', 'models/monkey.jpg', 'cv.TM_CCOEFF_NORMED')
     monkey_image.convert('RGB').save(build_folder + "/monkey.jpg")
 
     head_image = main.get_sub_image(build_folder + '/monkey.jpg', 'models/head.jpg', 'cv.TM_CCOEFF_NORMED')
