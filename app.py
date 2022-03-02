@@ -1,16 +1,26 @@
-from flask import Flask, send_file
+import os
+import uuid
+
+from flask import Flask, send_file, request
 import texture_monkey
 
 app = Flask(__name__)
 
 
-@app.route('/get/texture/<model>', methods=['POST'])
+@app.route('/texture/<model>', methods=['POST'])
 def texture_model(model):
-    if model == 'monkey':
-        texture_monkey.color_monkey()
-        return send_file("build/monkey.gltf", mimetype='application/octet-stream')
+    build_folder = 'build_' + str(uuid.uuid4())
+    if model == 'monkey' and 'screenshot' in request.files:
+        os.mkdir(build_folder)
+        request.files['screenshot'].save(os.path.join(build_folder, 'screenshot.jpg'))
+        return texture_monkey.color_monkey(build_folder)
 
-    return 0
+    return ''
+
+
+@app.route('/get/model/<build>/<model>', methods=['GET'])
+def get_build(build, model):
+    return send_file(build + '/' + model, download_name=model)
 
 
 @app.route('/test', methods=['GET'])
