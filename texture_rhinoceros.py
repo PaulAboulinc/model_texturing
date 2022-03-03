@@ -16,8 +16,11 @@ def color_rhinoceros(build_folder):
     head1_image = main.get_sub_image(build_folder + '/rhinoceros.jpg', 'models/rhinoceros/head1.jpg', 'cv.TM_CCOEFF_NORMED')
     head1_image.save(build_folder + "/head1.jpg")
 
-    head2_image = main.get_sub_image(build_folder + '/rhinoceros.jpg', 'models/rhinoceros/head2.jpg', 'cv.TM_CCOEFF_NORMED')
+    head2_image = main.get_sub_image(build_folder + '/head1.jpg', 'models/rhinoceros/head2.jpg', 'cv.TM_CCOEFF_NORMED')
     head2_image.save(build_folder + "/head2.jpg")
+
+    head3_image = main.get_sub_image(build_folder + '/head2.jpg', 'models/rhinoceros/head3.jpg', 'cv.TM_CCOEFF_NORMED')
+    head3_image.save(build_folder + "/head3.jpg")
 
     horn1_image = main.get_sub_image(build_folder + '/head2.jpg', 'models/rhinoceros/horn1.jpg', 'cv.TM_CCOEFF_NORMED')
     horn1_image.save(build_folder + "/horn1.jpg")
@@ -25,14 +28,17 @@ def color_rhinoceros(build_folder):
     horn2_image = main.get_sub_image(build_folder + '/horn1.jpg', 'models/rhinoceros/horn2.jpg', 'cv.TM_CCOEFF_NORMED')
     horn2_image.save(build_folder + "/horn2.jpg")
 
-    body_image = main.get_sub_image(build_folder + '/rhinoceros.jpg', 'models/rhinoceros/body.jpg', 'cv.TM_CCOEFF_NORMED')
-    body_image.save(build_folder + "/body.jpg")
+    body_image1 = main.get_sub_image(build_folder + '/rhinoceros.jpg', 'models/rhinoceros/body1.jpg', 'cv.TM_CCOEFF_NORMED')
+    body_image1.save(build_folder + "/body1.jpg")
+
+    body_image2 = main.get_sub_image(build_folder + '/body1.jpg', 'models/rhinoceros/body2.jpg', 'cv.TM_CCOEFF_NORMED')
+    body_image2.save(build_folder + "/body2.jpg")
 
     gltf = GLTF2().load("models/rhinoceros/rhinoceros.gltf")
 
-    head = main.get_dominant_color(head2_image)
+    head = main.get_dominant_color(head3_image)
     horn = main.get_dominant_color(horn2_image)
-    body = main.get_dominant_color(body_image)
+    body = main.get_dominant_color(body_image2)
 
     black = [0.0, 0.0, 0.0, 1.0]
     gltf.materials[8].pbrMetallicRoughness.baseColorFactor = black  # eyes
