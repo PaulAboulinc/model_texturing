@@ -22,15 +22,21 @@ def color_snake(build_folder):
     bottom_head = main.get_sub_image(build_folder + '/head.jpg', 'models/snake/bottom_head.jpg', 'cv.TM_CCOEFF_NORMED')
     bottom_head.save(build_folder + "/bottom_head.jpg")
 
-    body_image = main.get_sub_image(build_folder + '/snake.jpg', 'models/snake/body.jpg', 'cv.TM_CCOEFF_NORMED')
-    body_image.save(build_folder + "/body.jpg")
+    body_image1 = main.get_sub_image(build_folder + '/snake.jpg', 'models/snake/body1.jpg', 'cv.TM_CCOEFF_NORMED')
+    body_image1.save(build_folder + "/body1.jpg")
+
+    body_image2 = main.get_sub_image(build_folder + '/body1.jpg', 'models/snake/body2.jpg', 'cv.TM_CCOEFF_NORMED')
+    body_image2.save(build_folder + "/body2.jpg")
+
+    body_image3 = main.get_sub_image(build_folder + '/body2.jpg', 'models/snake/body3.jpg', 'cv.TM_CCOEFF_NORMED')
+    body_image3.save(build_folder + "/body3.jpg")
 
     gltf = GLTF2().load("models/snake/snake.gltf")
 
     top_head = main.get_dominant_color(top_head_image)
     bottom_head = main.get_dominant_color(bottom_head)
-    body = main.get_dominant_color(body_image)
-    #
+    body = main.get_dominant_color(body_image3)
+
     black = [0.0, 0.0, 0.0, 1.0]
     gltf.materials[4].pbrMetallicRoughness.baseColorFactor = black  # right eye
     gltf.materials[5].pbrMetallicRoughness.baseColorFactor = black  # left eye
