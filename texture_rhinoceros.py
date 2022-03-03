@@ -19,7 +19,7 @@ def color_rhinoceros(build_folder):
     head2_image = main.get_sub_image(build_folder + '/rhinoceros.jpg', 'models/rhinoceros/head2.jpg', 'cv.TM_CCOEFF_NORMED')
     head2_image.save(build_folder + "/head2.jpg")
 
-    horn1_image = main.get_sub_image(build_folder + '/head.jpg', 'models/rhinoceros/horn1.jpg', 'cv.TM_CCOEFF_NORMED')
+    horn1_image = main.get_sub_image(build_folder + '/head2.jpg', 'models/rhinoceros/horn1.jpg', 'cv.TM_CCOEFF_NORMED')
     horn1_image.save(build_folder + "/horn1.jpg")
 
     horn2_image = main.get_sub_image(build_folder + '/horn1.jpg', 'models/rhinoceros/horn2.jpg', 'cv.TM_CCOEFF_NORMED')
