@@ -54,6 +54,7 @@ def color_rhinoceros(build_folder):
     gltf.materials[5].pbrMetallicRoughness.baseColorFactor = body  # body
     gltf.materials[6].pbrMetallicRoughness.baseColorFactor = body  # body
     gltf.materials[9].pbrMetallicRoughness.baseColorFactor = body  # body
+    gltf.materials[10].pbrMetallicRoughness.baseColorFactor = body  # body
     gltf.materials[11].pbrMetallicRoughness.baseColorFactor = body  # body
     gltf.materials[12].pbrMetallicRoughness.baseColorFactor = body  # body
     gltf.materials[13].pbrMetallicRoughness.baseColorFactor = body  # body
